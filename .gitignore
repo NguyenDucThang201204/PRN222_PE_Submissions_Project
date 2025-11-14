@@ -22,6 +22,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+out/
+publish/
 
 # .NET Core
 project.lock.json
@@ -32,6 +34,7 @@ artifacts/
 ScaffoldingReadMe.txt
 
 # NuGet Packages
+packages/
 *.nupkg
 # NuGet Symbol Packages
 *.snupkg
@@ -52,3 +55,40 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# IDE caches
+.vs/
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+Log/
+Logs/
+
+# User-specific settings
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Temp files
+*.tmp
+*.temp
+~$*
+*.swp
+
+# Publish profiles
+*.pubxml
+*.pubxml.user
+
+# Backup files
+*.bak
+
+
+
