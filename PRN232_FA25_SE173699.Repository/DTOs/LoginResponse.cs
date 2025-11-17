@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PRN232_FA25_SE173699.Repository.DTOs
+{
+    public class LoginResponse
+    {
+        public string Token { get; set; }
+        public string Role { get; set; }
+    }
+}
