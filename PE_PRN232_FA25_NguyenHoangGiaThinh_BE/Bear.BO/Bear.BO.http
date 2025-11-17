@@ -1,0 +1,6 @@
+@Bear.BO_HostAddress = http://localhost:5173
+
+GET {{Bear.BO_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
