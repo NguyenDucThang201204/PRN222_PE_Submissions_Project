@@ -1,0 +1,6 @@
+@WebAPI.ThienNH_HostAddress = http://localhost:5273
+
+GET {{WebAPI.ThienNH_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
