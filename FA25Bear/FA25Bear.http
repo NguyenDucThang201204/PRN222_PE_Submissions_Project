@@ -1,0 +1,6 @@
+@FA25Bear_HostAddress = http://localhost:5109
+
+GET {{FA25Bear_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
