@@ -1,0 +1,6 @@
+@PE_PRN232_FA25_PhamThiThanhNgan.API_HostAddress = http://localhost:5216
+
+GET {{PE_PRN232_FA25_PhamThiThanhNgan.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
