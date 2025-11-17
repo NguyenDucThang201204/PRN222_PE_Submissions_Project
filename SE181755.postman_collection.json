@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "fe0bccdc-ac31-4167-b07d-2fbc03550c47",
+		"name": "important",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38696342"
+	},
+	"item": [
+		{
+			"name": "Login_Failed",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": {{email}},\r\n  \"password\": {{wrong_password}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/Accounts/Login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Accounts",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let data = pm.response.json();\r",
+							"pm.collectionVariables.set(\"token\", data.token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": {{email}},\r\n  \"password\": {{password}}\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/Accounts/Login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Accounts",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/BearProfiles",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_By_ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/BearProfiles/{{object_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"BearProfiles",
+						"{{object_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/BearProfiles/{{object_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"BearProfiles",
+						"{{object_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5174"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": "\"admin@handbagasian.org\""
+		},
+		{
+			"key": "password",
+			"value": "\"@1\""
+		},
+		{
+			"key": "wrong_password",
+			"value": "\"Abc123\""
+		},
+		{
+			"key": "object_id",
+			"value": "3"
+		}
+	]
+}
