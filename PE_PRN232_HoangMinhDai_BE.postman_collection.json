@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "93f6ebe5-57c6-4936-a572-3ae83b01f2ce",
+		"name": "PE_PRN232_HoangMinhDai_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38792860"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Login_Failed\r",
+							"pm.test(\"Login Failed\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// Login_Pass  \r",
+							"pm.test(\"Login Success\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response).to.have.property('token');\r",
+							"    pm.expect(response).to.have.property('role');\r",
+							"    // Save token for subsequent requests\r",
+							"    pm.environment.set(\"token\", response.token);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/Accounts/Login",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"Accounts",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UnAuthorized_CRUD\r",
+							"pm.test(\"Unauthorized GetAll - Missing/Invalid Token\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// GetAll_Forbidden (403) \r",
+							"pm.test(\"GetAll Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});\r",
+							"\r",
+							"// GetAll_InternalServerError (500)\r",
+							"pm.test(\"GetAll Internal Server Error\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB50001\");\r",
+							"    pm.expect(response.message).to.equal(\"Internal server error\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/BearProfiles",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UnAuthorized_CRUD\r",
+							"pm.test(\"Unauthorized GetById - Missing/Invalid Token\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// GetById_Success\r",
+							"pm.test(\"GetById Success\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"// GetById_Forbidden (403) \r",
+							"pm.test(\"GetById Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});\r",
+							"\r",
+							"// GetById_InternalServerError (500)\r",
+							"pm.test(\"GetById Internal Server Error\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB50001\");\r",
+							"    pm.expect(response.message).to.equal(\"Internal server error\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/BearProfiles/1",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UnAuthorized_CRUD - Create\r",
+							"pm.test(\"Unauthorized Create - Missing/Invalid Token\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// Create_Success\r",
+							"pm.test(\"Create Success\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"// Create_Forbidden (403)\r",
+							"pm.test(\"Create Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});\r",
+							"\r",
+							"// Create_InternalServerError (500)\r",
+							"pm.test(\"Create Internal Server Error\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB50001\");\r",
+							"    pm.expect(response.message).to.equal(\"Internal server error\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bearProfileId\": 0,\r\n  \"bearTypeId\": 2,\r\n  \"bearName\": \"Gausieunhan\",\r\n  \"weight\": 250.01,\r\n  \"characteristics\": \"Gau ngoan\",\r\n  \"careNeeds\": \"An nhieu\",\r\n  \"modifiedDate\": \"2025-11-09T01:25:20.441Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/BearProfiles",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UnAuthorized_CRUD - Update\r",
+							"pm.test(\"Unauthorized Update - Missing/Invalid Token\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// Update_Success\r",
+							"pm.test(\"Update Success\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"    // const response = pm.response.json();\r",
+							"    // pm.expect(response).to.have.property('id');\r",
+							"    // pm.expect(response).to.have.property('modelName');\r",
+							"    // pm.expect(response).to.have.property('material');\r",
+							"    // pm.expect(response).to.have.property('price');\r",
+							"    // pm.expect(response).to.have.property('stock');\r",
+							"    // pm.expect(response).to.have.property('brandId');\r",
+							"});\r",
+							"\r",
+							"// Update_Forbidden (403) - Role không đủ quyền\r",
+							"pm.test(\"Update Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});\r",
+							"\r",
+							"// Update_InternalServerError (500)\r",
+							"pm.test(\"Update Internal Server Error\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB50001\");\r",
+							"    pm.expect(response.message).to.equal(\"Internal server error\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bearProfileId\": 11,\r\n  \"bearTypeId\": 2,\r\n  \"bearName\": \"Gausieunhangao\",\r\n  \"weight\": 250.01,\r\n  \"characteristics\": \"Gau ngoan\",\r\n  \"careNeeds\": \"An nhieu\",\r\n  \"modifiedDate\": \"2025-11-09T01:25:20.441Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/BearProfiles/11",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UnAuthorized_CRUD - Delete\r",
+							"pm.test(\"Unauthorized Delete - Missing/Invalid Token\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(401);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40101\");\r",
+							"    pm.expect(response.message).to.equal(\"Token missing/invalid\");\r",
+							"});\r",
+							"\r",
+							"// Delete_Success\r",
+							"pm.test(\"Delete Success\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"    const response = pm.response.json();\r",
+							"    // Kiểm tra response trả về thành công\r",
+							"    pm.expect(response).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"// Delete_Forbidden (403) - Role không đủ quyền\r",
+							"pm.test(\"Delete Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});\r",
+							"\r",
+							"// Delete_InternalServerError (500)\r",
+							"pm.test(\"Delete Internal Server Error\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB50001\");\r",
+							"    pm.expect(response.message).to.equal(\"Internal server error\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/BearProfiles/11",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Search_Forbidden (403) - Role không đủ quyền\r",
+							"pm.test(\"Search Forbidden - Insufficient Role Permission\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.errorCode).to.equal(\"HB40301\");\r",
+							"    pm.expect(response.message).to.equal(\"Permission denied\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/BearProfiles/Search?BearName=gau den&BearWeight=&BearTypeName=gau den",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"BearProfiles",
+						"Search"
+					],
+					"query": [
+						{
+							"key": "BearName",
+							"value": "gau den"
+						},
+						{
+							"key": "BearWeight",
+							"value": ""
+						},
+						{
+							"key": "BearTypeName",
+							"value": "gau den"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
