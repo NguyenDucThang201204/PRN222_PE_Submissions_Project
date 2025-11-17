@@ -1,0 +1,813 @@
+{
+	"info": {
+		"_postman_id": "bb5d2bf1-9f27-4693-8ea0-efd11f00ca83",
+		"name": "PE__PRN232_FA25_DuongNT_BE",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39004207"
+	},
+	"item": [
+		{
+			"name": "Login Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {",
+							"    const response = pm.response;",
+							"",
+							"    if (response.code === 200) {",
+							"        pm.expect(response.code).to.equal(200);",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");",
+							"    } else if (response.code === 401) {",
+							"        pm.expect(response.code).to.equal(401);",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");",
+							"    } else if (response.code === 403) {",
+							"        pm.expect(response.code).to.equal(403);",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");",
+							"    } else {",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);",
+							"    }",
+							"});",
+							"const json = pm.response.json(); ",
+							"pm.collectionVariables.set(\"token\", json.token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmF0b3JAbGVvcGFyZC5jb20iLCJyb2xlIjoiNSIsIkFjY291bnRJZCI6IjUiLCJuYmYiOjE3NjI2NDExNjMsImV4cCI6MTc2MjY1MTk2MywiaWF0IjoxNzYyNjQxMTYzfQ.qZBE7znWiQZy6XMbDlNYxSrwKRbF08_GZ7NViF2A7vQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"manager@leopard.com\",\r\n  \"password\": \"@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Account/Login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Account",
+						"Login"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Login Succes",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"manager@leopard.com\",\r\n  \"password\": \"@1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/Account/Login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:19:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAbGVvcGFyZC5jb20iLCJyb2xlIjoiTWFuYWdlciIsIkFjY291bnRJZCI6IjIiLCJuYmYiOjE3NjI2NTExNTksImV4cCI6MTc2MjY2MTk1OSwiaWF0IjoxNzYyNjUxMTU5fQ.jLzPQBD0SvprZV-VxjBlZXcqi8edIvy6uiUFfyDW5lA\",\n    \"role\": \"Manager\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login Failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {",
+							"    const response = pm.response;",
+							"",
+							"    if (response.code === 200) {",
+							"        pm.expect(response.code).to.equal(200);",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");",
+							"    } else if (response.code === 401) {",
+							"        pm.expect(response.code).to.equal(401);",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");",
+							"    } else if (response.code === 403) {",
+							"        pm.expect(response.code).to.equal(403);",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");",
+							"    } else {",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);",
+							"    }",
+							"});",
+							"const json = pm.response.json(); ",
+							"pm.collectionVariables.set(\"token\", json.token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"manager@leopard.com\",\n  \"password\": \"@2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Account/Login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Account",
+						"Login"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Login Failed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"manager@leopard.com\",\n  \"password\": \"@2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/Account/Login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:20:55 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"HB40101\",\n    \"status\": 401,\n    \"message\": \"Token missing/invalid\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {",
+							"    const response = pm.response;",
+							"",
+							"    if (response.code === 200) {",
+							"        pm.expect(response.code).to.equal(200);",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");",
+							"    } else if (response.code === 401) {",
+							"        pm.expect(response.code).to.equal(401);",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");",
+							"    } else if (response.code === 403) {",
+							"        pm.expect(response.code).to.equal(403);",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");",
+							"    } else {",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);",
+							"    }",
+							"});",
+							"const json = pm.response.json(); ",
+							"pm.collectionVariables.set(\"id\", json.bearProfileId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAbGVvcGFyZC5jb20iLCJyb2xlIjoiTWFuYWdlciIsIkFjY291bnRJZCI6IjIiLCJuYmYiOjE3NjI2NTE0MzIsImV4cCI6MTc2MjY2MjIzMiwiaWF0IjoxNzYyNjUxNDMyfQ.9gWrSvSLIYxWoCgEopl4QMh3n5B769C4Fv-3ndZKEMc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bearProfileId\": 0,\n  \"bearTypeId\": 2,\n  \"bearName\": \"Black Bear\",\n  \"weight\": 250.1,\n  \"characteristics\": \"tesst\",\n  \"careNeeds\": \"testt\",\n  \"modifiedDate\": \"2025-11-09T01:22:03.327Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/BearProfile",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"BearProfile"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Create Succes",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bearProfileId\": 0,\n  \"bearTypeId\": 2,\n  \"bearName\": \"Black Bear\",\n  \"weight\": 250.1,\n  \"characteristics\": \"tesst\",\n  \"careNeeds\": \"testt\",\n  \"modifiedDate\": \"2025-11-09T01:22:03.327Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/BearProfile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"BearProfile"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:24:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"\",\n    \"message\": \"Created successfully\",\n    \"data\": {\n        \"bearProfileId\": 13,\n        \"bearTypeId\": 2,\n        \"bearName\": \"Black Bear\",\n        \"weight\": 250.1,\n        \"characteristics\": \"tesst\",\n        \"careNeeds\": \"testt\",\n        \"modifiedDate\": \"2025-11-09T08:24:42.2838477+07:00\",\n        \"bearType\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Profile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {",
+							"    const response = pm.response;",
+							"",
+							"    if (response.code === 200) {",
+							"        pm.expect(response.code).to.equal(200);",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");",
+							"    } else if (response.code === 401) {",
+							"        pm.expect(response.code).to.equal(401);",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");",
+							"    } else if (response.code === 403) {",
+							"        pm.expect(response.code).to.equal(403);",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");",
+							"    } else {",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);",
+							"    }",
+							"});",
+							"const json = pm.response.json(); ",
+							"pm.collectionVariables.set(\"id\", json.bearProfileId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/BearProfile/10",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"BearProfile",
+						"10"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Update Succes",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bearProfileId\": 0,\r\n  \"bearTypeId\": 1,\r\n  \"bearName\": \"Red Bear\",\r\n  \"weight\": 300.1,\r\n  \"characteristics\": \"tesss\",\r\n  \"careNeeds\": \"tessss\",\r\n  \"modifiedDate\": \"2025-11-09T01:25:10.382Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/BearProfile/9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"BearProfile",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:26:39 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"\",\n    \"message\": \"Updated successfully\",\n    \"data\": {\n        \"bearProfileId\": 9,\n        \"bearTypeId\": 1,\n        \"bearName\": \"Red Bear\",\n        \"weight\": 300.1,\n        \"characteristics\": \"tesss\",\n        \"careNeeds\": \"tessss\",\n        \"modifiedDate\": \"2025-11-09T01:25:10.382Z\",\n        \"bearType\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {\r",
+							"    const response = pm.response;\r",
+							"\r",
+							"    if (response.code === 200) {\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");\r",
+							"    } else if (response.code === 401) {\r",
+							"        pm.expect(response.code).to.equal(401);\r",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");\r",
+							"    } else if (response.code === 403) {\r",
+							"        pm.expect(response.code).to.equal(403);\r",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");\r",
+							"    } else {\r",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);\r",
+							"    }\r",
+							"});\r",
+							"const json = pm.response.json(); \r",
+							"pm.collectionVariables.set(\"id\", json.bearProfileId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAbGVvcGFyZC5jb20iLCJyb2xlIjoiTWFuYWdlciIsIkFjY291bnRJZCI6IjIiLCJuYmYiOjE3NjI2NTE0MzIsImV4cCI6MTc2MjY2MjIzMiwiaWF0IjoxNzYyNjUxNDMyfQ.9gWrSvSLIYxWoCgEopl4QMh3n5B769C4Fv-3ndZKEMc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/BearProfile/8",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"BearProfile",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Deleted succes",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/BearProfile/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"BearProfile",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:28:12 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"\",\n    \"message\": \"Deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GetALL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {\r",
+							"    const response = pm.response;\r",
+							"\r",
+							"    if (response.code === 200) {\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");\r",
+							"    } else if (response.code === 401) {\r",
+							"        pm.expect(response.code).to.equal(401);\r",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");\r",
+							"    } else if (response.code === 403) {\r",
+							"        pm.expect(response.code).to.equal(403);\r",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");\r",
+							"    } else {\r",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);\r",
+							"    }\r",
+							"});\r",
+							"const json = pm.response.json(); \r",
+							"pm.collectionVariables.set(\"id\", json.bearProfileId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAbGVvcGFyZC5jb20iLCJyb2xlIjoiTWFuYWdlciIsIkFjY291bnRJZCI6IjIiLCJuYmYiOjE3NjI2NTE0MzIsImV4cCI6MTc2MjY2MjIzMiwiaWF0IjoxNzYyNjUxNDMyfQ.9gWrSvSLIYxWoCgEopl4QMh3n5B769C4Fv-3ndZKEMc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/BearProfile",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"BearProfile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetALL Succes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/BearProfile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"BearProfile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:29:13 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"bearProfileId\": 1,\n        \"bearTypeId\": 1,\n        \"bearName\": \"Panthera tigris tigris\",\n        \"weight\": 35,\n        \"characteristics\": \"The leopard possesses a tawny or rusty yellow-colored coat with close-set rosettes and dark spots\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 2,\n        \"bearTypeId\": 1,\n        \"bearName\": \"Nepalaliis\",\n        \"weight\": 22,\n        \"characteristics\": \"Females of this subspecies weigh around 29 kg, and males weigh around 56 kg\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 3,\n        \"bearTypeId\": 1,\n        \"bearName\": \"Bhutanient\",\n        \"weight\": 39,\n        \"characteristics\": \"The Sri Lankan leopard has historically been found across a wide range of habitats on the island nation including arid scrub jungle, rainforest, upper highland forest, and dry evergreen monsoon forest\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 4,\n        \"bearTypeId\": 2,\n        \"bearName\": \"Bengal\",\n        \"weight\": 33,\n        \"characteristics\": \"The leopards are either completely black due to a recessive phenotype or have the usual spotted coat\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 5,\n        \"bearTypeId\": 2,\n        \"bearName\": \"Ekaterina\",\n        \"weight\": 30,\n        \"characteristics\": \"The Javan leopard is critically endangered, and only about 250 individuals survive in protected habitats in their range\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 6,\n        \"bearTypeId\": 2,\n        \"bearName\": \"Sierra\",\n        \"weight\": 31,\n        \"characteristics\": \"Depletion of the prey base, poaching, habitat loss and also conflicts with humans have resulted in a rapid downfall in the numbers of the Javan leopard\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 7,\n        \"bearTypeId\": 3,\n        \"bearName\": \"Panthera\",\n        \"weight\": 17,\n        \"characteristics\": \"Like most other wildlife in the region, the leopard faces threats due to habitat loss and poaching for illegal wildlife trade\",\n        \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n        \"modifiedDate\": \"2025-06-20T00:00:00\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 9,\n        \"bearTypeId\": 1,\n        \"bearName\": \"Red Bear\",\n        \"weight\": 300.1,\n        \"characteristics\": \"tesss\",\n        \"careNeeds\": \"tessss\",\n        \"modifiedDate\": \"2025-11-09T01:25:10.383\",\n        \"bearType\": null\n    },\n    {\n        \"bearProfileId\": 13,\n        \"bearTypeId\": 2,\n        \"bearName\": \"Black Bear\",\n        \"weight\": 250.1,\n        \"characteristics\": \"tesst\",\n        \"careNeeds\": \"testt\",\n        \"modifiedDate\": \"2025-11-09T08:24:42.283\",\n        \"bearType\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get By ID4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get All - Status code check\", function () {\r",
+							"    const response = pm.response;\r",
+							"\r",
+							"    if (response.code === 200) {\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        console.log(\"Get All: PASS - Successfully retrieved (200)\");\r",
+							"    } else if (response.code === 401) {\r",
+							"        pm.expect(response.code).to.equal(401);\r",
+							"        console.log(\"Get All: PASS - Unauthorized (401)\");\r",
+							"    } else if (response.code === 403) {\r",
+							"        pm.expect(response.code).to.equal(403);\r",
+							"        console.log(\"Get All: PASS - Forbidden (403)\");\r",
+							"    } else {\r",
+							"        pm.expect.fail(\"Get All: FAIL - Unexpected status code: \" + response.code);\r",
+							"    }\r",
+							"});\r",
+							"const json = pm.response.json(); \r",
+							"pm.collectionVariables.set(\"id\", json.bearProfileId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAbGVvcGFyZC5jb20iLCJyb2xlIjoiTWFuYWdlciIsIkFjY291bnRJZCI6IjIiLCJuYmYiOjE3NjI2NTE0MzIsImV4cCI6MTc2MjY2MjIzMiwiaWF0IjoxNzYyNjUxNDMyfQ.9gWrSvSLIYxWoCgEopl4QMh3n5B769C4Fv-3ndZKEMc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/BearProfile/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"BearProfile",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search By ID Succes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/BearProfile/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"BearProfile",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Nov 2025 01:30:00 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bearProfileId\": 1,\n    \"bearTypeId\": 1,\n    \"bearName\": \"Panthera tigris tigris\",\n    \"weight\": 35,\n    \"characteristics\": \"The leopard possesses a tawny or rusty yellow-colored coat with close-set rosettes and dark spots\",\n    \"careNeeds\": \"These animals are classified as endangered by the IUCN\",\n    \"modifiedDate\": \"2025-06-20T00:00:00\",\n    \"bearType\": null\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://template.postman-echo.com"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
