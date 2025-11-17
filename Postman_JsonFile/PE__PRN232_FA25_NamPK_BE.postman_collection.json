@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "4c169326-12f8-4204-80b9-0ad668599a76",
+		"name": "PE__PRN232_FA25_NamPK_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38225379",
+		"_collection_link": "https://dark-meteor-982300.postman.co/workspace/My-Workspace~56f9bf06-3c0e-41f1-8dea-04a78ae45c46/collection/38225379-4c169326-12f8-4204-80b9-0ad668599a76?action=share&source=collection_link&creator=38225379"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "/Accounts/Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Accounts/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Accounts",
+										"Login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Accounts/Login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Accounts",
+												"Login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BearProfiles",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/BearProfiles/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2386"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/BearProfiles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"BearProfiles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/BearProfiles/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bearTypeId\": 7472,\n  \"bearName\": \"string\",\n  \"bearWeight\": 7288.479059933086,\n  \"characteristics\": \"string\",\n  \"careNeeds\": 8299,\n  \"modifiedDate\": \"1967-02-26\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2386"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"bearTypeId\": 7472,\n  \"bearName\": \"string\",\n  \"bearWeight\": 7288.479059933086,\n  \"characteristics\": \"string\",\n  \"careNeeds\": 8299,\n  \"modifiedDate\": \"1967-02-26\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/BearProfiles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"BearProfiles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/BearProfiles/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2386"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/BearProfiles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"BearProfiles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/BearProfiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/BearProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BearProfiles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/BearProfiles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bearTypeId\": 7472,\n  \"bearName\": \"string\",\n  \"bearWeight\": 7288.479059933086,\n  \"characteristics\": \"string\",\n  \"careNeeds\": 8299,\n  \"modifiedDate\": \"1967-02-26\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/BearProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BearProfiles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bearTypeId\": 7472,\n  \"bearName\": \"string\",\n  \"bearWeight\": 7288.479059933086,\n  \"characteristics\": \"string\",\n  \"careNeeds\": 8299,\n  \"modifiedDate\": \"1967-02-26\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "WeatherForecast",
+			"item": [
+				{
+					"name": "Get Weather Forecast",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/WeatherForecast",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/WeatherForecast",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"WeatherForecast"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"date\": \"2022-12-25\",\n    \"temperatureC\": 5366,\n    \"temperatureF\": 7555,\n    \"summary\": \"string\"\n  },\n  {\n    \"date\": \"1989-02-15\",\n    \"temperatureC\": 8944,\n    \"temperatureF\": 3369,\n    \"summary\": \"string\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7105"
+		},
+		{
+			"key": "bearerToken",
+			"value": ""
+		}
+	]
+}
