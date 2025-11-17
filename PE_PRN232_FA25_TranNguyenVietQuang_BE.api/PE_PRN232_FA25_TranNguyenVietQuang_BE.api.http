@@ -1,0 +1,6 @@
+@PE_PRN232_FA25_TranNguyenVietQuang_BE.api_HostAddress = http://localhost:5043
+
+GET {{PE_PRN232_FA25_TranNguyenVietQuang_BE.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
