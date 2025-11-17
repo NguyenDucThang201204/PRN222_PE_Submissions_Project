@@ -1,0 +1,6 @@
+@BearPetManagement.APIService_HostAddress = http://localhost:5078
+
+GET {{BearPetManagement.APIService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
