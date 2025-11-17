@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Repository.Models;
+
+public partial class BearType
+{
+    public int BearTypeId { get; set; }
+
+    public string BearTypeName { get; set; } = null!;
+
+    public int? Origin { get; set; }
+
+    public string? Description { get; set; }
+
+    //public virtual ICollection<BearProfile> BearProfiles { get; set; } = new List<BearProfile>();
+}
