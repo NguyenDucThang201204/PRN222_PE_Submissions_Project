@@ -1,0 +1,6 @@
+@PE__PRN232_FA25_NamPK_BE_HostAddress = http://localhost:5186
+
+GET {{PE__PRN232_FA25_NamPK_BE_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
