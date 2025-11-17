@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "9e24501d-fc2d-4ea5-b7dc-cadc59fe0271",
+		"name": "PE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38914634"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200 and response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response).to.have.status(200);\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Login successfully\", function () {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res).to.have.keys([\"token\", \"role\"]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"tanloc@gmail.com\",\r\n  \"password\": \"@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7177/Accounts/Login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7177",
+					"path": [
+						"Accounts",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
