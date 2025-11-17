@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PE_PRN232_FA25_PhamTrungHieu_BE.DAL\PE_PRN232_FA25_PhamTrungHieu_BE.DAL.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>
