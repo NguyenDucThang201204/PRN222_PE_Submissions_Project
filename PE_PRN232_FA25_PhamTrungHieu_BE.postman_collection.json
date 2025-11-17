@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "8dc468b9-0d9b-4daf-bcfe-05ebb4833583",
+		"name": "PE_PRN232_FA25_PhamTrungHieu_BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46746989",
+		"_collection_link": "https://nhatanh-2083483.postman.co/workspace/Nhat-Anh's-Workspace~f11b7737-7c4a-4f9d-8fbf-47d000f71777/collection/46746989-8dc468b9-0d9b-4daf-bcfe-05ebb4833583?action=share&source=collection_link&creator=46746989"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"manager@bear.com\",\n  \"password\": \"manager123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/Accounts/Login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"Accounts",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA4NyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwODcifQ.HZ7lOBlkPDJTV89-ShrB2yCZEhLf3YB20styagsDxzY"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7087/BearProfiles/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"BearProfiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA4NyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwODcifQ.HZ7lOBlkPDJTV89-ShrB2yCZEhLf3YB20styagsDxzY"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7087/BearProfiles",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA4NyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwODcifQ.HZ7lOBlkPDJTV89-ShrB2yCZEhLf3YB20styagsDxzY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bearTypeId\": 1,\n  \"bearName\": \"String\",\n  \"bearWeight\": 211,\n  \"characteristics\": \"string\",\n  \"careNeeds\": \"string\",\n  \"modifiedDate\": \"2025-11-09T01:09:10.773Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/BearProfiles",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA4NyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwODcifQ.HZ7lOBlkPDJTV89-ShrB2yCZEhLf3YB20styagsDxzY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bearTypeId\": 2,\n  \"bearName\": \"Updated\",\n  \"bearWeight\": 2223,\n  \"characteristics\": \"string\",\n  \"careNeeds\": \"string\",\n  \"modifiedDate\": \"2025-11-09T01:09:33.302Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/BearProfiles/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"BearProfiles",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA4NyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwODcifQ.HZ7lOBlkPDJTV89-ShrB2yCZEhLf3YB20styagsDxzY"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7087/BearProfiles/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"BearProfiles",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
