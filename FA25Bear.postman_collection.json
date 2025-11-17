@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "88b51504-bd56-4e83-8b26-98392def2014",
+		"name": "FA25Bear",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38205430"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "/Accounts/Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userName\": \"manager@bear.com\",\n  \"password\": \"@1\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Accounts/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Accounts",
+										"Login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BearProfilesControlller",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/BearProfiles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/BearProfiles",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bearName\": \"Bear Update\",\n  \"bearTypeId\": 1,\n  \"careNeeds\": \"AAAAA\",\n  \"characteristics\": \"AAAAAA\",\n  \"modifiedDate\": \"1984-01-01T11:21:22.616Z\",\n  \"weight\": 300\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/11",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/BearProfiles",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfilesControlller/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfilesControlller",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SearchWithPaging",
+					"item": [
+						{
+							"name": "/BearProfiles/Search",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/BearProfiles/Search?bearName=Bear&weight=300&page=1&pageSize=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"BearProfiles",
+										"Search"
+									],
+									"query": [
+										{
+											"key": "bearName",
+											"value": "Bear"
+										},
+										{
+											"key": "weight",
+											"value": "300"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/BearProfiles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/BearProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BearProfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/BearProfiles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bearName\": \"Create Bear\",\n  \"bearProfileId\": 0,\n  \"bearTypeId\": 2,\n  \"careNeeds\": \"AAAA\",\n  \"characteristics\": \"AAAA\",\n  \"modifiedDate\": \"1996-05-26T09:39:20.444Z\",\n  \"weight\": 5952.033482004067\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/BearProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BearProfiles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WeatherForecast",
+			"item": [
+				{
+					"name": "Get Weather Forecast",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/WeatherForecast",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7168"
+		},
+		{
+			"key": "bearerToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJtYW5hZ2VyQGJlYXIuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTc2MjY1NzYzOCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzEyNiIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMjYifQ.kpdhInNI-HDLui2_f2wQGn0N0H2wlBorW5TZRN3vNHA"
+		}
+	]
+}
