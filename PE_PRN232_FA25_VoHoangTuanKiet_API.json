@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "ed040b9f-be49-47de-836c-b97df0f6f4c1",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49773210",
+		"_collection_link": "https://kietvhtse183616-2524343.postman.co/workspace/V%C3%B5-Ho%C3%A0ng-Tu%E1%BA%A5n-Ki%E1%BB%87t-(SE183616)'s~64a744bb-f8bd-43d6-8889-205eec49acfd/collection/49773210-ed040b9f-be49-47de-836c-b97df0f6f4c1?action=share&source=collection_link&creator=49773210"
+	},
+	"item": [
+		{
+			"name": "http://{{$baseUrl}}/api/auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin\",\r\n  \"password\": \"@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseUrl}}/Accounts/login",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Accounts",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://{{baseUrl}}/BearProfiles",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://{{baseUrl}}/BearProfiles/1",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BearProfiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bearProfileId\": 1,\r\n  \"bearTypeId\": 1,\r\n  \"bearName\": \"Amo123\",\r\n  \"bearWeight\": 200,\r\n  \"characteristics\": \"string\",\r\n  \"careNeeds\": \"string\",\r\n  \"modifiedDate\": \"2025-11-09T01:30:12.710Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseUrl}}/BearProfiles",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BearProfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bearProfileId\": 1,\r\n  \"bearTypeId\": 1,\r\n  \"bearName\": \"Amo123\",\r\n  \"bearWeight\": 200,\r\n  \"characteristics\": \"string\",\r\n  \"careNeeds\": \"string\",\r\n  \"modifiedDate\": \"2025-11-09T01:30:12.710Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseUrl}}/BearProfiles/1",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BearProfiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://{{baseUrl}}/BearProfiles/1",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BearProfiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
