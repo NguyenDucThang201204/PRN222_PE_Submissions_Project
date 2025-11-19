@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model PantherPetManagement_PhanThanhDuc.Pages.PantherPage.DeleteModel
+@{
+    ViewData["Title"] = "Delete Panther Profile";
+}
+
+<h2>Delete Panther Profile</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <p><strong>Panther Name:</strong> @Model.PantherProfile.PantherName</p>
+    <p><strong>Weight:</strong> @Model.PantherProfile.Weight</p>
+    <p><strong>Panther Type:</strong> @Model.PantherProfile.PantherType.PantherTypeName</p>
+    <form method="post">
+        <input type="hidden" asp-for="PantherProfile.PantherProfileId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
