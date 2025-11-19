@@ -1,0 +1,40 @@
+﻿@page
+@model PantherPetManagement_PhanThanhDuc.Pages.PantherPage.IndexModel
+@{
+    ViewData["Title"] = "Panther Profiles";
+}
+
+<h2>Panther Profiles</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Panther Name</th>
+            <th>Weight</th>
+            <th>Panther Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PantherProfiles)
+        {
+            <tr>
+                <td>@item.PantherName</td>
+                <td>@item.Weight</td>
+                <td>@item.PantherTypeName</td>
+                <td>
+                    <a asp-page="./Detail" asp-route-id="@item.Id">Detail</a> |
+                    @* <a asp-page="./Update" asp-route-id="@item.Id">Update</a> | *@
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <a asp-page="./Index" asp-route-pageNumber="@i" class="@(i == Model.CurrentPage ? "btn btn-primary" : "btn btn-link")">@i</a>
+    }
+</div>
+@* <a asp-page="./Create" class="btn btn-success">Create New</a> *@
