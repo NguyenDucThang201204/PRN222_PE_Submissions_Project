@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model PantherPetManagement_PhanThanhDuc.Pages.PantherPage.DetailModel
+@{
+    ViewData["Title"] = "Panther Profile Detail";
+}
+
+<h2>Panther Profile Detail</h2>
+<div>
+    <p><strong>Panther Name:</strong> @Model.PantherProfile.PantherName</p>
+    <p><strong>Weight:</strong> @Model.PantherProfile.Weight</p>
+    <p><strong>Panther Type:</strong> @Model.PantherProfile.PantherType.PantherTypeName</p>
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</div>
